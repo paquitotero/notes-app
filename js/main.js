@@ -13,13 +13,14 @@ const addNewNote = NotesApp.addNewNote;
 
 // Named functions
 function getNoteById(searchId) {
-  let foundIndex;
+  let found;
   notes.forEach (function(note, index) {
     if (note._id === searchId) {
-      foundIndex = index;
+      found = index;
+      return;
     }
   });
-  return foundIndex;
+  return found;
 };
 
 const updateNote = function(_id, title, text, index) {
@@ -38,7 +39,7 @@ const insertNote = function(_id, title, text) {
         text: text,
         title: title,
     };
-    note.push(note);
+    notes.push(note);
 };
 
 const saveNote = () => NotesApp.saveNote(function(_id, title, text) {
