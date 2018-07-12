@@ -47,12 +47,16 @@ const saveNote = () => NotesApp.saveNote(function(_id, title, text) {
   // If note was found, replace values
   // If not add it
   // What's do you think missing?
+  if(title === '') {
+    title = 'Please add a title'
+  }
   let index = getNoteById(_id);
   if (index !== undefined) {
     updateNote (_id, title, text, index);
   } else {
     insertNote(_id, title, text);
   }
+  NotesApp.renderNotesList();
 });
 
 const onClickNote = (event) => NotesApp.onClick(event, function(_id) {
